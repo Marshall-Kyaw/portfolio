@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for things Tailwind is too verbose for */
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-xl font-bold text-slate-800 tracking-tight">John<span class="text-brand-600">Doe.</span></a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">About</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Projects</a>
+                    <a href="#contact" class="px-4 py-2 text-sm font-medium text-white bg-slate-900 hover:bg-brand-600 rounded-lg transition-all shadow-sm">Contact Me</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#home" class="mobile-link block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#projects" class="mobile-link block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">Projects</a>
+                <a href="#contact" class="mobile-link block px-3 py-3 text-base font-medium text-brand-600 hover:bg-brand-50 rounded-md">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 w-full">
+            <!-- Text Content -->
+            <div class="flex-1 text-center md:text-left">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-100 text-brand-600 text-sm font-semibold mb-4 tracking-wide">Available for Work</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-400">John Doe</span><br>
+                    Creative Developer.
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0">
+                    I build accessible, responsive, and highly performant web applications with modern technologies. Turning complex problems into elegant interfaces.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="px-8 py-3.5 text-base font-medium text-white bg-slate-900 hover:bg-brand-600 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                        View My Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 text-base font-medium text-slate-700 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 rounded-xl transition-all shadow-sm flex items-center justify-center">
+                        Get in Touch
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="mt-10 flex items-center justify-center md:justify-start gap-6">
+                    <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="github" class="w-6 h-6"></i><span class="sr-only">GitHub</span></a>
+                    <a href="#" class="text-slate-400 hover:text-[#0A66C2] transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i><span class="sr-only">LinkedIn</span></a>
+                    <a href="#" class="text-slate-400 hover:text-[#1DA1F2] transition-colors"><i data-lucide="twitter" class="w-6 h-6"></i><span class="sr-only">Twitter</span></a>
+                </div>
+            </div>
+            
+            <!-- Profile Picture Placeholder -->
+            <div class="flex-1 w-full max-w-md md:max-w-full flex justify-center md:justify-end relative">
+                <!-- Decorative blob/background -->
+                <div class="absolute w-72 h-72 bg-brand-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+                <div class="absolute w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000 -bottom-8 -left-4"></div>
+                
+                <!-- Actual Image -->
+                <img src="https://placehold.co/500x500/cbd5e1/475569?text=Profile\nPicture" alt="John Doe" class="relative z-10 w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-3xl shadow-2xl border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white border-y border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="https://placehold.co/600x700/f8fafc/64748b?text=Workspace\nImage" alt="Workspace" class="rounded-3xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6 relative inline-block">
+                        About Me
+                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-brand-500 rounded-full"></span>
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        I'm a passionate Front-End Developer with over 3 years of experience creating user-centric digital products. I love combining art with logic to build beautiful, functional, and accessible websites.
+                    </p>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        When I'm not coding, you can find me exploring new coffee shops, hiking trails, or contributing to open-source projects.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-900 mb-4">My Tech Stack</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">HTML5 & CSS3</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">JavaScript (ES6+)</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">React.js</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">Tailwind CSS</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">Node.js</span>
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-brand-50 hover:text-brand-600 transition-colors cursor-default">Git & GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4 relative inline-block">
+                    Selected Projects
+                    <span class="absolute -bottom-2 left-1/4 w-1/2 h-1 bg-brand-500 rounded-full"></span>
+                </h2>
+                <p class="text-slate-600 text-lg mt-4">A showcase of some of my recent work, side projects, and experiments.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-1">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=E-Commerce+Dashboard" alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-brand-50 text-brand-600 rounded-md">React</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">Tailwind</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">E-Commerce Dashboard</h3>
+                        <p class="text-slate-600 mb-6 flex-1 text-sm leading-relaxed">A responsive admin dashboard for an e-commerce platform featuring real-time data visualization, inventory management, and user authentication.</p>
+                        <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100">
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-900 hover:text-brand-600 transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-1">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=AI+Writing+Tool" alt="Project 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-brand-50 text-brand-600 rounded-md">Vue.js</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">OpenAI API</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">AI Writing Assistant</h3>
+                        <p class="text-slate-600 mb-6 flex-1 text-sm leading-relaxed">A sleek web application that helps users generate blog posts, emails, and essays using advanced AI models. Features a distraction-free rich text editor.</p>
+                        <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100">
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-900 hover:text-brand-600 transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hover:-translate-y-1">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Task+Manager" alt="Project 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-brand-50 text-brand-600 rounded-md">Vanilla JS</span>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md">CSS3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Productivity Tracker</h3>
+                        <p class="text-slate-600 mb-6 flex-1 text-sm leading-relaxed">A minimalist, lightning-fast task management app utilizing local storage. Built completely without frameworks to demonstrate deep DOM manipulation skills.</p>
+                        <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-100">
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-900 hover:text-brand-600 transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                
+                <!-- Contact Info -->
+                <div class="p-10 md:p-12 md:w-2/5 bg-brand-600 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+                        <p class="text-brand-100 mb-8 leading-relaxed">Have a project in mind or just want to say hi? I'd love to hear from you. Fill out the form and I'll get back to you shortly.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i data-lucide="mail" class="w-6 h-6 text-brand-200 mt-1"></i>
+                                <div>
+                                    <p class="text-sm text-brand-200 font-medium">Email</p>
+                                    <a href="mailto:hello@johndoe.com" class="text-lg hover:underline decoration-2 underline-offset-4">hello@johndoe.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-brand-200 mt-1"></i>
+                                <div>
+                                    <p class="text-sm text-brand-200 font-medium">Location</p>
+                                    <p class="text-lg">San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center hover:bg-white hover:text-brand-600 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center hover:bg-white hover:text-brand-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="p-10 md:p-12 md:w-3/5 bg-white">
+                    
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="form-success" class="hidden h-full flex-col items-center justify-center text-center space-y-4 py-8">
+                        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i data-lucide="check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Message Sent!</h3>
+                        <p class="text-slate-600">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                        <button onclick="resetForm()" class="mt-6 text-brand-600 font-medium hover:underline">Send another message</button>
+                    </div>
+
+                    <!-- Actual Form -->
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="firstName" class="text-sm font-medium text-slate-700 block">First Name</label>
+                                <input type="text" id="firstName" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="John">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="lastName" class="text-sm font-medium text-slate-700 block">Last Name</label>
+                                <input type="text" id="lastName" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm font-medium text-slate-700 block">Email Address</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label for="message" class="text-sm font-medium text-slate-700 block">Message</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-4 px-6 text-white font-medium bg-slate-900 hover:bg-brand-600 rounded-lg transition-all shadow-md hover:shadow-lg flex justify-center items-center gap-2 group">
+                            Send Message
+                            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xl font-bold text-white tracking-tight">John<span class="text-brand-500">Doe.</span></div>
+            <p class="text-sm">&copy; <span id="year"></span> John Doe. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                // Change icon to 'x'
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                // Change icon back to 'menu'
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            }
+            lucide.createIcons(); // Re-initialize icons inside button
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+
+        // Contact Form Handling (Simulation)
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would send data to a backend here (e.g. via fetch to Formspree or a custom API)
+            
+            // Hide form, show success message
+            contactForm.classList.add('hidden');
+            formSuccess.classList.remove('hidden');
+            formSuccess.classList.add('flex');
+        });
+
+        // Reset form function for the "Send another message" button
+        window.resetForm = function() {
+            contactForm.reset();
+            formSuccess.classList.add('hidden');
+            formSuccess.classList.remove('flex');
+            contactForm.classList.remove('hidden');
+        };
+
+        // Add shadow to navbar on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
